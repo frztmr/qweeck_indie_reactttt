@@ -45,12 +45,13 @@ function App() {
 
   const keepLogin = () => {
 
-    let userLogStore, password = localStorage.getItem('userLogStore')
-      
+    let username = localStorage.getItem('usernameLogStore')
+    //let iduser = localStorage.getItem('')
 
-    if (userLogStore) {
-      Axios.post(API_URL + "/auth/login", {
-        password
+    if (username) {
+      Axios.post(API_URL + "/auth/keeplogin", {
+       username,
+       //iduser
       }).then((res) => {
         if (res.data.length == 0) {
           localStorage.setItem('userLogStore', res.data[0].username)
